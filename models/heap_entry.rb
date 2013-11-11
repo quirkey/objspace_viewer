@@ -72,4 +72,8 @@ class HeapEntry < ActiveRecord::Base
     doc
   end
 
+  def truncated_value(length = 30)
+    value ? value.to_s[0..length] : ""
+  end
+
 end
