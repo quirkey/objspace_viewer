@@ -28,6 +28,7 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.1)
       rack
+    rake (10.1.0)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -45,6 +46,8 @@ PLATFORMS
 
 DEPENDENCIES
   haml
+  multi_json
   pg
+  rake
   sinatra
   sinatra-activerecord
