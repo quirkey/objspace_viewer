@@ -10,6 +10,8 @@ GEM
       activesupport (= 4.0.1)
       arel (~> 4.0.0)
     activerecord-deprecated_finders (1.0.3)
+    activerecord-import (0.4.1)
+      activerecord (>= 3.0)
     activesupport (4.0.1)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
@@ -24,11 +26,13 @@ GEM
     i18n (0.6.5)
     minitest (4.7.5)
     multi_json (1.8.2)
+    oj (2.1.7)
     pg (0.17.0)
     rack (1.5.2)
     rack-protection (1.5.1)
       rack
     rake (10.1.0)
+    ruby-progressbar (1.2.0)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -45,9 +49,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-import
   haml
   multi_json
+  oj
   pg
   rake
+  ruby-progressbar
   sinatra
   sinatra-activerecord
