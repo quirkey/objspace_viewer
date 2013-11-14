@@ -1,0 +1,48 @@
+!= haml :heap_header, :locals => {:heap => @heap}, :layout => false
+
+
+%h3 Entry: #{@entry.heap_address}
+
+%dl
+  %dt Address
+  %dd= @entry.heap_address
+  %dt Type
+  %dd= @entry.entry_type
+  %dt Class Address
+  %dd!= address_link @entry.heap, @entry.class_address
+  %dt Encoding
+  %dd= @entry.encoding
+  %dt Embedded
+  %dd= @entry.is_embedded
+  %dt Shared
+  %dd= @entry.is_shared
+  %dt Frozen
+  %dd= @entry.is_frozen
+  %dt Associated
+  %dd= @entry.is_associated
+  %dt Value
+  %dd
+    %pre
+      %code= @entry.escaped_value
+  %dt Bytesize
+  %dd= @entry.bytesize
+  %dt Size
+  %dd= @entry.size
+  %dt Memsize
+  %dd= @entry.memsize
+  %dt Capacity
+  %dd= @entry.capacity
+  %dt Length
+  %dd= @entry.length
+  %dt Node Type
+  %dd= @entry.node_type
+  %dt Name
+  %dd= @entry.name
+  %dt Root
+  %dd= @entry.root
+
+%h4 Referencing Entries
+!= haml :heap_table, :locals => {:heap => @heap, :heap_entries => @entry.referencing_entries}, :layout => false
+
+%h4 Referenced Entries
+!= haml :heap_table, :locals => {:heap => @heap, :heap_entries => @entry.referenced_entries}, :layout => false

@@ -1,24 +1,5 @@
-%h2 Heap #{@heap.name}
+!= haml :heap_header, :locals => {:heap => @heap}, :layout => false
 
-%h4 Created at #{@heap.created_at}
+%h3 Largest Objects
 
-%h3 Largest Object
-
-%table
-  %thead
-    %tr
-      %th Address
-      %th Type
-      %th Value
-      %th Memsize
-      %th Class Address
-  %tbody
-    - @heap.largest_objects.each do |entry|
-      %tr
-        %td= entry.heap_address
-        %td= entry.entry_type
-        %td
-          = entry.truncated_value
-          &hellip;
-        %td= entry.memsize
-        %td= entry.class_address
+!= haml :heap_table, :locals => {:heap => @heap, :heap_entries => @heap.largest_objects}, :layout => false

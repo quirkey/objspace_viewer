@@ -1,0 +1,18 @@
+%table
+  %thead
+    %tr
+      %th Address
+      %th Type
+      %th Value
+      %th Memsize
+      %th Class Address
+  %tbody
+    - heap_entries.each do |entry|
+      %tr
+        %td!= address_link heap, entry.heap_address
+        %td= entry.entry_type
+        %td
+          = entry.truncated_value
+          &hellip;
+        %td= entry.memsize
+        %td= entry.class_address

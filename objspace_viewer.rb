@@ -23,4 +23,16 @@ class ObjspaceViewer < Sinatra::Application
     haml :heap
   end
 
+  get "/heaps/:id/entry/:address" do
+    @heap = Heap.find params[:id]
+    @entry = @heap.heap_entries.find_by_heap_address(params[:address])
+    haml :heap_entry
+  end
+
+  helpers do
+    def address_link(heap, address)
+      "<a href='/heaps/#{heap.id}/entry/#{address}'>#{address}</a>"
+    end
+  end
+
 end

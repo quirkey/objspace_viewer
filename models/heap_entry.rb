@@ -76,4 +76,36 @@ class HeapEntry < ActiveRecord::Base
     value ? value.to_s[0..length] : ""
   end
 
+  def escaped_value
+    EscapeUtils.escape_html(value || '')
+  end
+
+  def referencing_entries
+    HeapEntry.find_by_sql([%{
+      SELECT *
+      FROM heap_entries
+      WHERE heap_address IN(
+        SELECT from_address
+        FROM heap_references
+        WHERE heap_id = ?
+        AND to_address = ?
+      )
+      AND heap_id = ?
+    }, heap_id, heap_address, heap_id])
+  end
+
+  def referenced_entries
+    HeapEntry.find_by_sql([%{
+      SELECT *
+      FROM heap_entries
+      WHERE heap_address IN(
+        SELECT to_address
+        FROM heap_references
+        WHERE heap_id = ?
+        AND from_address = ?
+      )
+      AND heap_id = ?
+    }, heap_id, heap_address, heap_id])
+  end
+
 end
