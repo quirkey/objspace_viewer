@@ -5,6 +5,7 @@
       %th Type
       %th Value
       %th Memsize
+      %th Length
       %th Class Address
   %tbody
     - heap_entries.each do |entry|
@@ -15,4 +16,5 @@
           = entry.truncated_value
           &hellip;
         %td= entry.memsize
+        %td= entry.length
         %td= entry.class_address

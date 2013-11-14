@@ -1,5 +1,7 @@
 != haml :heap_header, :locals => {:heap => @heap}, :layout => false
 
-%h3 Largest Objects
+%h3 Largest by Memsize
+!= haml :heap_table, :locals => {:heap => @heap, :heap_entries => @heap.largest_by(:memsize)}, :layout => false
 
-!= haml :heap_table, :locals => {:heap => @heap, :heap_entries => @heap.largest_objects}, :layout => false
+%h3 Largest by Length
+!= haml :heap_table, :locals => {:heap => @heap, :heap_entries => @heap.largest_by(:length)}, :layout => false
