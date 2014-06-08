@@ -1,7 +1,7 @@
 class HeapEntry < ActiveRecord::Base
   belongs_to :heap
 
-  def self.import_file(filename, batch_size = 100)
+  def self.import_file(filename, batch_size = 200)
     dump = File.open(filename, 'r')
     pbar = ProgressBar.create(:format => '%a |%b>>%i| %p%% %t', :total => dump.size)
     keys ||= []
@@ -33,7 +33,7 @@ class HeapEntry < ActiveRecord::Base
 
   def self.import_entry(heap, j)
     begin
-      json = MultiJson.load(j)
+      json = Oj.load(j)
     rescue => e
       warn e
       return false
@@ -58,6 +58,9 @@ class HeapEntry < ActiveRecord::Base
     doc.node_type     = json['node_type']
     doc.name          = json['name']
     doc.root          = json['root']
+    json['flags'].each do |f, v|
+      doc["is_#{f}"] = v
+    end if json['flags']
     references = []
     if json['references']
       json['references'].each do |ref|

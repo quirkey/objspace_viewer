@@ -12,7 +12,7 @@ class AddHeapEntry < ActiveRecord::Migration
       t.string :entry_type, :limit => 10
       t.string :class_address, :limit => 20
       t.string :encoding, :limit => 20
-      t.boolean :is_embedded, :is_shared, :is_frozen, :is_associated
+      t.boolean :is_embedded, :is_shared, :is_frozen, :is_associated, :is_wb_protected, :is_marked, :is_old
       t.text :value
       t.integer :bytesize, :size, :memsize, :capacity, :length
       t.integer :fd
