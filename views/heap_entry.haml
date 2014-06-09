@@ -40,6 +40,16 @@
   %dt Root
   %dd= @entry.root
 
+  %dt Marked/ WB Protected / Old
+  %dd
+    = @entry.is_marked
+    \/
+    = @entry.is_wb_protected
+    \/
+    = @entry.is_old
+  %dt Root
+  %dd= @entry.root
+
 %h4 Referencing Entries
 != haml :heap_table, :locals => {:heap => @heap, :heap_entries => @entry.referencing_entries}, :layout => false
 

@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20131110051833) do
     t.boolean "is_wb_protected"
     t.boolean "is_marked"
     t.boolean "is_old"
+    t.boolean "is_remembered"
     t.text    "value"
     t.integer "bytesize"
     t.integer "size"
