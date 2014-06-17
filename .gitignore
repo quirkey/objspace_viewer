@@ -2,3 +2,4 @@ bin/
 .bundle/
 log/*.log
 *.json
+.sass-cache

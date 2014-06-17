@@ -1,0 +1,37 @@
+@import 'bourbon';
+@import 'base/base';
+
+body {
+  margin: 0;
+}
+
+header {
+ background: rgb(40, 97, 121);
+ padding: 10px;
+ color: #FFF;
+}
+
+section {
+  padding: 10px;
+}
+
+h2 {
+  .timestamp {
+    float: right;
+    font-size: 12px;
+  }
+}
+
+h3 {
+  margin-top: 10px;
+  border-top: 1px solid #CCC;
+  padding: 10px 0px;
+}
+
+dl {
+  width: 30%;
+  float: left;
+}
+.clear {
+  clear: both;
+}

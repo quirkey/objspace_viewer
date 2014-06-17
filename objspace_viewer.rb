@@ -1,7 +1,6 @@
 require 'bundler'
 Bundler.require
-
-# require 'compass'
+require 'sass'
 
 Dir.glob('./models/*.rb') do |model|
   require model
@@ -32,6 +31,10 @@ class ObjspaceViewer < Sinatra::Application
     @heap = Heap.find params[:id]
     @entry = @heap.heap_entries.find_by_heap_address(params[:address])
     haml :heap_entry
+  end
+
+  get "/css/:file.css" do
+    scss :"sass/#{params[:file]}"
   end
 
   helpers do

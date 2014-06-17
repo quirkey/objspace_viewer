@@ -17,4 +17,4 @@
           &hellip;
         %td= entry.memsize
         %td= entry.length
-        %td= entry.class_address
+        %td!= address_link heap, entry.class_address

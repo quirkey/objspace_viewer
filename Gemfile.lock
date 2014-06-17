@@ -61,11 +61,13 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import
   bitters
+  bourbon
   escape_utils
   haml
   oj
   pg
   rake
   ruby-progressbar
+  sass
   sinatra
   sinatra-activerecord
