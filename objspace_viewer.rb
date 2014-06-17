@@ -18,6 +18,11 @@ class ObjspaceViewer < Sinatra::Application
     ActiveRecord::Base.logger = Logger.new("./log/#{environment}.log")
   end
 
+  get '/' do
+    @heaps = Heap.all.order(:created_at => :desc)
+    haml :index
+  end
+
   get "/heaps/:id" do
     @heap = Heap.find params[:id]
     haml :heap

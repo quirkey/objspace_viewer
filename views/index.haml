@@ -1,0 +1,6 @@
+.heaps
+  - @heaps.each do |heap|
+    .heap
+      .name
+        %a{href: "/heaps/#{heap.id}"}=heap.name
+      .created=heap.created_at

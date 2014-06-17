@@ -22,8 +22,7 @@
   %dd= @entry.is_associated
   %dt Value
   %dd
-    %pre
-      %code= @entry.escaped_value
+    = @entry.value
   %dt Bytesize
   %dd= @entry.bytesize
   %dt Size
@@ -38,6 +37,16 @@
   %dd= @entry.node_type
   %dt Name
   %dd= @entry.name
+  %dt Root
+  %dd= @entry.root
+
+  %dt Marked/ WB Protected / Old
+  %dd
+    = @entry.is_marked
+    \/
+    = @entry.is_wb_protected
+    \/
+    = @entry.is_old
   %dt Root
   %dd= @entry.root
 
