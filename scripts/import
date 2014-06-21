@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require './objspace_viewer'
+HeapEntry.import_file(ARGV[0])

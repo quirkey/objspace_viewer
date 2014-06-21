@@ -4,52 +4,32 @@
 %h3 Entry: #{@entry.heap_address}
 
 %dl
-  %dt Address
-  %dd= @entry.heap_address
   %dt Type
   %dd= @entry.entry_type
   %dt Class Address
   %dd!= address_link @entry.heap, @entry.class_address
-  %dt Encoding
-  %dd= @entry.encoding
-  %dt Embedded
-  %dd= @entry.is_embedded
-  %dt Shared
-  %dd= @entry.is_shared
-  %dt Frozen
-  %dd= @entry.is_frozen
-  %dt Associated
-  %dd= @entry.is_associated
-  %dt Value
-  %dd
-    = @entry.value
-  %dt Bytesize
-  %dd= @entry.bytesize
-  %dt Size
-  %dd= @entry.size
-  %dt Memsize
-  %dd= @entry.memsize
-  %dt Capacity
-  %dd= @entry.capacity
-  %dt Length
-  %dd= @entry.length
-  %dt Node Type
-  %dd= @entry.node_type
-  %dt Name
-  %dd= @entry.name
-  %dt Root
-  %dd= @entry.root
+%dl
+  - %w|bytesize size memsize capacity length|.each do |size_m|
+    - if size = @entry.send(size_m) and size and size > 0
+      %dt= size_m.capitalize
+      %dd= size
+%dl
+  %dt Marked
+  %dd= !!@entry.is_marked
+  %dt WB Protected
+  %dd= !!@entry.is_wb_protected
+  %dt Old
+  %dd= !!@entry.is_old
+%dl
+  - %w|encoding is_embedded is_shared is_frozen is_associated node_type name root|.each do |attr|
+    - if a = @entry.send(attr) and !a.nil?
+      %dt= attr.capitalize
+      %dd= a
+- if @entry.value
+  %h4 Value
+  = @entry.value
 
-  %dt Marked/ WB Protected / Old
-  %dd
-    = @entry.is_marked
-    \/
-    = @entry.is_wb_protected
-    \/
-    = @entry.is_old
-  %dt Root
-  %dd= @entry.root
-
+.clear
 %h4 Referencing Entries
 != haml :heap_table, :locals => {:heap => @heap, :heap_entries => @entry.referencing_entries}, :layout => false
 

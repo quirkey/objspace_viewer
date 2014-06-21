@@ -5,3 +5,6 @@
 
 %h3 Largest by Length
 != haml :heap_table, :locals => {:heap => @heap, :heap_entries => @heap.largest_by(:length)}, :layout => false
+
+%h3 Most References
+!= haml :heap_table, :locals => {:heap => @heap, :heap_entries => @heap.most_references}, :layout => false
