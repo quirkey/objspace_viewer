@@ -34,6 +34,8 @@ GEM
       rack
     rake (10.1.0)
     ruby-progressbar (1.2.0)
+    shotgun (0.9)
+      rack (>= 1.0)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -57,5 +59,6 @@ DEPENDENCIES
   pg
   rake
   ruby-progressbar
+  shotgun
   sinatra
   sinatra-activerecord
