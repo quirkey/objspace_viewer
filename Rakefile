@@ -1,3 +1,4 @@
+require 'sinatra/activerecord'
 require 'sinatra/activerecord/rake'
 
 task :environment do
